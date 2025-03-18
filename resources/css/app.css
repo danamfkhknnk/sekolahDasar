@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@source "../views";
+
+@theme {
+    --color-primary: #d0c7a2;
+    --color-secondary: #faf2dc;
+}
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
+
+@layer components {
+    .container {
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .container-sm {
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+    .container-lg {
+        justify-content: center;
+        align-items: center;
+        padding: 4rem;
+    }
+    .container-xl {
+        justify-content: center;
+        align-items: center;
+        padding: 5rem;
+    }
+    .container-2xl {
+        justify-content: center;
+        align-items: center;
+        padding: 6rem;
+    }
+}
