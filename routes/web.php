@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [UserController::class , 'login'])->name('login');
 Route::post('/login', [UserController::class , 'aksilogin']);
+Route::post('/register', [UserController::class , 'aksiregis'])->name('aksiregis');
+Route::get('/register', [UserController::class , 'regis'])->name('register');
 Route::get('/logout', [UserController::class , 'logout']);
 
 Route::middleware(['auth'])->group(function () {

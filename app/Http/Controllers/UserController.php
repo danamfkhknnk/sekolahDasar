@@ -12,8 +12,11 @@ class UserController extends Controller
     public function login(){
         return view('Component.login');
     }
+    public function regis(){
+        return view('Component.Register');
+    }
 
-    public function regis(Request $request){
+    public function aksiregis(Request $request){
         $request->validate([
             'email' => 'required|unique:users,email',
             'name' => 'required|unique:users,name',
