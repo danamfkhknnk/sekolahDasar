@@ -17,7 +17,6 @@ class GuruController extends Controller
         return view('Admin.Guru.Guru', compact('gurus'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([

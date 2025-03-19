@@ -22,6 +22,9 @@ class Guru extends Model
         'tanggallahir' => 'date',   
     ];
 
+    public function ruangkelas(){
+        return $this->hasMany(ruangkelas::class);
+    }
 
     public function kelas(){
         return $this->hasMany(Kelas::class);

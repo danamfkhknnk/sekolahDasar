@@ -211,7 +211,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="p-4 md:p-5">
-                          <form class="space-y-4" action="{{ url('admin/guru/'. $guru->id.'/update') }}" method="POST" enctype="multipart/form-data">
+                          <form class="space-y-4" action="{{ route('guru.update', $guru->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="grid grid-cols-2 gap-4 mb-2">

@@ -18,8 +18,17 @@ class Siswa extends Model
 
     ];
 
+    protected $casts = [
+        'tanggallahir' => 'date',   
+    ];
+
+    
     public function kelas(){
         return $this->hasMany(Kelas::class);
+    }
+
+    public function ruangkelas(){
+        return $this->hasMany(ruangkelas::class);
     }
 
 }
