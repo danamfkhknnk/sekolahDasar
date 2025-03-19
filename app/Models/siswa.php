@@ -15,6 +15,7 @@ class Siswa extends Model
         'tanggallahir',
         'alamat',
         'fotosiswa',
+        'orang_tua_id'
 
     ];
 
@@ -29,6 +30,11 @@ class Siswa extends Model
 
     public function ruangkelas(){
         return $this->hasMany(ruangkelas::class);
+    }
+
+    public function orang_tua(): BelongsTo
+    {
+        return $this->belongsTo(OrangTua::class);
     }
 
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\OrangTuaController;
 use App\Http\Controllers\RuangkelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
@@ -36,5 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/siswa/add', [SiswaController::class, 'store'])->name('siswa.store');
     Route::post('admin/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/admin/siswa/{id}/delete', [SiswaController::class, 'delete'])->name('siswa.delete');
+
+    Route::get('/admin/orangtua', [OrangTuaController::class, 'index'])->name('orangtua');
+    Route::post('/admin/orangtua/add', [OrangTuaController::class, 'store'])->name('orangtua.store');
 
 });

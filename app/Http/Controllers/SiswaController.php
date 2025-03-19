@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrangTua;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -11,9 +12,9 @@ class SiswaController extends Controller
 {
     public function index(){
 
-        $siswas = Siswa::simplePaginate(5);
-
-        return view('Admin.Siswa.Siswa', compact('siswas'));
+        $siswas = Siswa::with('orang_tua')->simplePaginate(5);
+        $orangtuas = OrangTua::all();
+        return view('Admin.Siswa.Siswa', compact('siswas','orangtuas'));
     }
 
     public function store(Request $request)
@@ -25,9 +26,11 @@ class SiswaController extends Controller
             'tempatlahir' => 'required|string|max:255',
             'tanggallahir' => 'required|date',
             'alamat' => 'required|string',
+            'orang_tua_id' => 'required|string',
+            
             'fotosiswa' => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
-        $data = $request->only('nama_lengkap', 'nisn', 'jk', 'tempatlahir', 'tanggallahir', 'alamat');
+        $data = $request->only('nama_lengkap', 'nisn', 'jk','orang_tua_id', 'tempatlahir', 'tanggallahir', 'alamat');
 
         if ($request->hasFile('fotosiswa')) {
             $file = $request->file('fotosiswa');

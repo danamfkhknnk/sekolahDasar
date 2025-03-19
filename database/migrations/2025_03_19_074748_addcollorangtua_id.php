@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('siswas', function (Blueprint $table) {
-        //     $table->string('fotosiswa');
-        // });
+        Schema::table('siswas', function (Blueprint $table) {
+            $table->foreignId('orang_tua_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+
+        });
     }
+    
 
     /**
      * Reverse the migrations.

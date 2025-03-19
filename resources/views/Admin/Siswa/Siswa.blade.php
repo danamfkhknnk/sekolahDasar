@@ -88,7 +88,7 @@
                             @enderror
                         </div>
                     </div>
-                       
+                    <div class="grid grid-cols-2 gap-4 mb-2">
                         <div>
                             <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
                             <textarea name="alamat" id="alamat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
@@ -96,6 +96,19 @@
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div>
+                        <label for="orang_tua_id" class="block mb-2 text-sm font-medium text-gray-900">Orang Tua</label>                            
+                        <select name="orang_tua_id" id="orang_tua_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                           @foreach ($orangtuas as $item)
+                               <option value="{{$item->id}}">{{$item->nama}}</option>
+                           @endforeach
+                        </select>
+                            @error('orang_tua_id')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                                                    
+                        </div>
+                    </div>
                         <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 rounded">Tambah siswa</button>
                     </form>
                     </div>
@@ -137,6 +150,9 @@
                   TTL
               </th>
               <th scope="col" class="px-6 py-3">
+                  Orang Tua
+              </th>
+              <th scope="col" class="px-6 py-3">
                   Alamat
               </th>
               <th scope="col" class="px-6 py-3">
@@ -165,6 +181,9 @@
               <td class="px-6 py-4">
                 {{$siswa->tempatlahir}},   
                 {{ $siswa->tanggallahir->format('d-m-Y')}}
+              </td>
+              <td class="px-6 py-4">
+                {{$siswa->orang_tua->nama ?? '-'}}   
               </td>
               <td class="px-6 py-4">
                 {{$siswa->alamat}}   
@@ -258,8 +277,6 @@
                                 </div>
                           
                             </div>
-                            
-                            
                             <div>
                                 <label for="fotosiswa" class="block mb-2 text-sm font-medium text-gray-900">Foto siswa</label>      
                                 <img src="{{ asset('/storage/foto/' . $siswa->fotosiswa) }}" class="w-10 mb-2">                       

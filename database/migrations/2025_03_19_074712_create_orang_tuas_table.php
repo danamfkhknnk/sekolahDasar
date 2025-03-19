@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('siswas', function (Blueprint $table) {
-        //     $table->string('fotosiswa');
-        // });
+        Schema::create('orang_tuas', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -21,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('orang_tuas');
     }
 };
