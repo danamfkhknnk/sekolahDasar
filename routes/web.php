@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\RuangkelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/kelas/{id}/delete', [KelasController::class, 'delete'])->name('kelas.delete');
     Route::post('/admin/kelas/{id}/updatewali', [KelasController::class, 'updatewali'])->name('wali.update');
     Route::post('/admin/kelas/{id}/updateketua', [KelasController::class, 'updateketua'])->name('ketua.update');
-
+    Route::post('/admin/kelas/{id}/gurukelas', [RuangkelasController::class, 'storeguru'])->name('store.gurukelas');
+    Route::post('/admin/kelas/{id}/siswakelas', [RuangkelasController::class, 'storesiswa'])->name('store.siswakelas');
+    Route::get('/admin/kelas/{id}/deleteguru', [RuangkelasController::class, 'deleteguru'])->name('delete.gurukelas');
+    Route::get('/admin/kelas/{id}/deletesiswa', [RuangkelasController::class, 'deletesiswa'])->name('delete.siswakelas');
     
     Route::get('/admin/guru', [GuruController::class , 'index'])->name('guru');
     Route::post('admin/guru/add', [GuruController::class, 'store'])->name('guru.store');

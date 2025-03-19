@@ -13,12 +13,14 @@ class KelasController extends Controller
 {
     public function index($id){
 
-        $guru = Guru::whereNotIn('id', Kelas::pluck('guru_id'))->get();
+        $guru = Guru::all();
         $kelas = kelas::findOrFail($id);
         $kelas->with('siswa','guru');
         $siswa = Siswa::all();
-
-        return view('Admin.Kelas.Kelas', compact('kelas','guru','siswa'));
+        
+        $tabelguru = ruangkelas::whereNotNull('guru_id')->with('guru')->get();
+        $tabelsiswa = ruangkelas::whereNotNull('siswa_id')->with('siswa')->get();
+        return view('Admin.Kelas.Kelas', compact('kelas','guru','siswa','tabelguru','tabelsiswa'));
     }
 
     public function store(Request $request){
