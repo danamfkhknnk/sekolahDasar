@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nama_lengkap');
             $table->string('nuptk');
-            $table->foreignId('kelas_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->enum('jk',['laki-laki','perempuan']);
             $table->string('mapel');
             $table->string('tempatlahir');
             $table->date('tanggallahir');
             $table->text('alamat');
+            $table->string('fotoguru');
             $table->timestamps();
         });
     }

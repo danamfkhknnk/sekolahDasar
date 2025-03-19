@@ -44,5 +44,19 @@ class UserController extends Controller
             return redirect()->route('login')->withErrors('Email dan password yang dimasukkan salah')->withInput();
         }
     }
+
+    public function logout(){
+        Auth::logout();
+
+        Session::flash('message',('Berhasil Keluar'));
+        return redirect()->route('login');
+    }
+
+    public function dashboard(){
+
+        $user = Auth::user();
+
+        return view ('Admin.Dashboard',compact('user'));
+    }
     
 }

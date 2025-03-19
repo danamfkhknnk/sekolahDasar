@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama_lengkap');
             $table->string('nisn');
-            $table->foreignId('kelas_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->enum('jk',['laki-laki','perempuan']);
             $table->string('tempatlahir');
             $table->date('tanggallahir');
-            $table->text('alamat');
+            $table->string('alamat');
 
             $table->timestamps();
         });
